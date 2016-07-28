@@ -10,8 +10,7 @@ import ReactNative, {
   Dimensions,
   ScrollView,
   Image,
-  Platform,
-  ActivityIndicator,
+  Platform
 } from 'react-native';
 
 import Slider from '@ldn0x7dc/react-native-slider';
@@ -88,11 +87,7 @@ export default class Controls extends React.Component {
 
     let bufferIndicator;
     if(this.props.buffering) {
-      bufferIndicator = (
-        <ActivityIndicator
-          color={'#f2f2f2'}
-          size={'large'}/>
-      );
+    
     }
 
     let tracks = [];
