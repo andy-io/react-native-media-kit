@@ -109,6 +109,15 @@ export default class Controls extends React.Component {
       }
     );
 
+    let thumbImage = {uri: 'media_player_thumb'};
+    let playImage = {uri: 'media_player_play'};
+    let pauseImage = {uri: 'media_player_pause'};
+
+    if(Platform.OS == 'ios') {
+      thumbImage = require('./img/media-player-thumb.png');
+      playImage = require('./img/media-player-play.png');
+      pauseImage = require('./img/media-player-pause.png');
+    }
 
     return (
       <View
@@ -122,7 +131,7 @@ export default class Controls extends React.Component {
             style={{width: 40, height: 40, alignItems: 'center', justifyContent: 'center'}}>
             <Image
               style={{width: 20, height: 20, resizeMode: 'contain'}}
-              source={this.props.playing ? require('./img/media-player-pause.png') : require('./img/media-player-play.png')}/>
+              source={this.props.playing ? pauseImage : playImage}/>
           </TouchableOpacity>
 
           <Text
@@ -133,7 +142,7 @@ export default class Controls extends React.Component {
           <Slider
             style={{flex: 1, marginHorizontal: 5, height: 40}}
             trackContainerStyle={{height: 2, backgroundColor: 'gray'}}
-            thumbImage={require('./img/media-player-thumb.png')}
+            thumbImage={thumbImage}
             thumbStyle={{width: 10, height: 10}}
 
             onSlidingComplete={(value) => {
