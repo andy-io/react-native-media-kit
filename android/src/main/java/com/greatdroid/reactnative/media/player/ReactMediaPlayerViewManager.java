@@ -34,6 +34,9 @@ public class ReactMediaPlayerViewManager extends SimpleViewManager<ReactMediaPla
   public static final int CMD_SEEK_TO = 3;
   public static final int CMD_STOP = 4;
 
+
+
+
   @Override
   public String getName() {
     return REACT_CLASS;
