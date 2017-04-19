@@ -265,13 +265,13 @@
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
+  [self notifyPlayerFinished];
   if(player) {
     [player seekToTime:kCMTimeZero];
     if (self.loop) {
       [self play];
     }
   }
-  [self notifyPlayerFinished];
 }
 
 - (void)playerItemPlaybackStalled:(NSNotification *)notification {
@@ -279,6 +279,7 @@
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+  NSLog(keyPath);
   if(!player) {
     return;
   }
@@ -355,8 +356,9 @@
 - (void)seekTo: (NSTimeInterval) timeMs {
   NSLog(@"seekTo...timeMs=%f", timeMs);
   if(player) {
-    CMTime cmTime = CMTimeMakeWithSeconds(timeMs/1000, 1);
-    [player seekToTime:cmTime];
+	int32_t timeScale = player.currentItem.asset.duration.timescale;
+	CMTime cmTime = CMTimeMakeWithSeconds(timeMs/1000, timeScale);
+	[player seekToTime:cmTime toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
   }
 }
 @end
