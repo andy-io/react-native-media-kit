@@ -1,8 +1,9 @@
-import React, {PropTypes} from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactNative, {
   StyleSheet,
   View,
+  ViewPropTypes,
   NativeModules,
   requireNativeComponent,
   Image
@@ -15,7 +16,7 @@ const RCT_MEDIA_PLAYER_VIEW_REF = "RCTMediaPlayerView";
 const RCTMediaPlayerView = requireNativeComponent('RCTMediaPlayerView', {
   name: 'RCTMediaPlayerView',
   propTypes: {
-    ...View.propTypes,
+    ...ViewPropTypes,
     src: PropTypes.string,
     autoplay: PropTypes.bool,
     preload: PropTypes.string,
