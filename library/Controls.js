@@ -12,7 +12,7 @@ import ReactNative, {
   Platform
 } from 'react-native';
 
-import Slider from '@ldn0x7dc/react-native-slider';
+import Slider from '@terranet/react-native-slider';
 
 /**
  * format as --:-- or --:--:--
